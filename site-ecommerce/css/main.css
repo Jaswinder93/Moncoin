@@ -115,11 +115,11 @@ h1 {
 	transition-duration: .3s;
 }
 
-#hamberger, #hamburger-content {
+#hamburger, #hamburger-content {
 	display: inline;
 }
 
-#hamburger-button {
+#hamburger-button,#hamburger-croix {
 	display: none;
 	cursor: pointer;
 	background: none;
@@ -134,13 +134,13 @@ h1 {
 
 #hamburger-overlay {
 	display: none;
-	position: fixed;
+	position: sticky;
 	z-index: 10;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, .4);
+	background-color: rgba(175, 29, 29, 0.4);
 }
 
 #hamburger-sidebar {
@@ -153,7 +153,7 @@ h1 {
 	left: 0;
 	background-color: #FFF;
 	transform: translateX(-100%);
-	transition: transform .2s ease-out;
+	transition: transform .4s ease-out;
 }
 #hamburger-sidebar li {
 	display: block;
@@ -175,6 +175,17 @@ h1 {
 	margin-right: 16px;
 	margin-bottom: 4px;
 }
+
+#hamburger-sidebar-body .button {
+	float: none;
+	display: block;
+	text-align: center;
+	margin-top: 20px;
+	height: auto;
+	padding: 14px;
+	line-height: inherit;
+}
+
 #hamburger-sidebar-body li:first-child:before {
 	background-image: url(../images/icons/boutique.png);
 }
@@ -183,15 +194,6 @@ h1 {
 }
 #hamburger-sidebar-body li:last-child(3):before {
 	background-image: url(../images/icons/panier.png);
-}
-#hamburger-sidebar-body .button {
-	float: none;
-	display: block;
-	text-align: center;
-	margin-top: 16px;
-	height: auto;
-	padding: 10px;
-	line-height: inherit;
 }
 
 @media screen and (max-width: 1024px) {
@@ -205,7 +207,7 @@ h1 {
 	}
 
 	#hamburger-button, #hamburger-sidebar, .hamburger-activated #hamburger-overlay {
-		display: block;
+		display: inline;
 	}
 
 	.hamburger-activated #hamburger-sidebar {

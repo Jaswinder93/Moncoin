@@ -3,6 +3,7 @@ var sidebarBody = document.querySelector('#hamburger-sidebar-body');
 var button = document.querySelector('#hamburger-button');
 var overlay = document.querySelector('#hamburger-overlay');
 var activatedClass = 'hamburger-activated';
+var croix= document.querySelector('#hamburger-croix');
 
 sidebarBody.innerHTML = content.innerHTML;
 
@@ -10,19 +11,23 @@ button.addEventListener('click', function(e) {
 	e.preventDefault();
 
 	this.parentNode.classList.add(activatedClass);
+	button.style.display='none';
+	croix.style.display='block';
 });
 
-button.addEventListener('keydown', function(e) {
-	if (this.parentNode.classList.contains(activatedClass)) {
-		if (e.repeat === false && e.which === 27)
-			this.parentNode.classList.remove(activatedClass);
-	}
-
-	this.parentNode.classList.remove(activatedClass);
-});
-
-overlay.addEventListener('click', function(e) {
+croix.addEventListener('click', function(e) {
 	e.preventDefault();
-
 	this.parentNode.classList.remove(activatedClass);
+	button.style.display='block';
+	croix.style.display='none';
 });
+
+
+var width;
+window.onresize = window.onload = function() {
+    width = this.innerWidth;
+    if(width>1024){
+		button.style.display='none';
+		croix.style.display='none';
+	} else button.style.display='block';
+}
