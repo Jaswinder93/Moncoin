@@ -14,44 +14,32 @@
     </div>
     <div class="carousel-cell">
         <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
+            <img class="w3-images" src="../vue/visiteur/img/pc.png">
             
         </a>
             <p>Informatique</p>
     </div>
     <div class="carousel-cell">
         <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
+            <img class="w3-images" src="../vue/visiteur/img/book.png">
         </a>
         <p>Livres</p>
     </div>
     <div class="carousel-cell">
         <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
+            <img class="w3-images" src="../vue/visiteur/img/bijou.png">
         </a>
         <p>Bijoux</p>
     </div>
     <div class="carousel-cell">
         <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
-        </a>
-        <p>Jardin</p>
-    </div>
-    <div class="carousel-cell">
-        <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
-        </a>
-        <p>Bricolage</p>
-    </div>
-    <div class="carousel-cell">
-        <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
+            <img class="w3-images" src="../vue/visiteur/img/jeu.png">
         </a>
         <p>Jeux/DVD</p>
     </div>
     <div class="carousel-cell">
         <a>
-            <img class="w3-images" src="../vue/visiteur/img/helicoptere.png">
+            <img class="w3-images" src="../vue/visiteur/img/logiciel.png">
         </a>
         
         <p>Logiciels</p>
