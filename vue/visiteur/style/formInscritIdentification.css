@@ -1,0 +1,199 @@
+.containerInscription input:focus:invalid {
+    border-bottom: 2px solid red;
+}
+
+.containerInscription input:focus:invalid {
+    border-bottom: 2px solid red;
+    box-shadow: rgba(238, 99, 74, 0.25) 0px 30px 60px -12px inset, rgba(248, 66, 66, 0.3)0px 18px 36px -18px inset;
+}
+
+.containerInscription input:focus:valid {
+    border-bottom: 2px solid green;
+    box-shadow: rgba(142, 233, 90, 0.25) 0px 30px 60px -12px inset, rgba(121, 233, 87, 0.3) 0px 18px 36px -18px inset;
+}
+
+#contenuPage,
+#containMotDePasse,
+#containChgMotDePasse {
+    padding-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.containerInscription {
+    border-radius: 5px;
+    background-image: linear-gradient( 178.2deg, rgba(118, 8, 23, 1) 10.9%, rgba(158, 12, 33, 1) 62.6%);
+    padding: 10px;
+}
+
+.inscription input,
+.identification input,
+.motDePasse input {
+    width: 100%;
+    padding: 10px;
+    resize: vertical;
+}
+
+.inscription h1,
+.identification h1 {
+    font-size: 26px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.inscription .fas.fa-user-plus {
+    color: white;
+    font-size: 60px;
+}
+
+.inscription,
+.identification {
+    width: 100%;
+    text-align: center;
+}
+
+.inscription label {
+    width: 100%;
+    padding-top: 1%;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row {
+    padding: 5px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.col-75 input {
+    width: 90%;
+    float: left;
+}
+
+.col-75 .eye {
+    float: left;
+    width: 5%;
+    margin-top: 12px;
+}
+
+.col-75 .eye .fas.fa-eye-slash.one,
+.col-75 .eye .fas.fa-eye-slash.two {
+    display: none;
+    cursor: pointer;
+}
+
+.col-75 .eye .far.fa-eye.one,
+.col-75 .eye .fas.fa-eye-slash.two {
+    cursor: pointer;
+}
+
+.col-75 .eye .far.fa-eye:hover.one,
+.col-75 .eye .fas.fa-eye-slash.two {
+    color: rgb(163, 4, 4);
+}
+
+.inscription input[type=submit],
+.identification input[type=submit],
+.motDePasse input[type=submit] {
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgba(3, 19, 46, 1) 0%, rgba(28, 19, 19, 1) 90%);
+    color: white;
+    padding: 12px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30%;
+    float: right;
+}
+
+.row p {
+    color: white;
+}
+
+#contenuIdentification {
+    padding-top: 7%;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.formIdentification label {
+    color: white;
+    vertical-align: middle;
+}
+
+.containerIdentification {
+    border-radius: 5px;
+    background-image: radial-gradient( circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
+    padding: 10px;
+}
+
+.identification img {
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.mdpforget {
+    text-decoration: none;
+    color: white;
+}
+
+.mdpforget:hover {
+    color: rgb(146, 9, 9);
+}
+
+.containerMotDePasse,
+.containerChgMotDePassee {
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+    background-color: white;
+}
+
+.motDePasse h1 {
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border-bottom: 1px solid black;
+}
+
+@media screen and (max-width: 800px) {
+    .col-25,
+    .col-75,
+    .inscription input[type=submit],
+    .identification input[type=submit],
+    .motDePasse input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+    #contenuPage,
+    #contenuIdentification,
+    #containMotDePasse,
+    #containerChgMotDePassee {
+        padding-top: 5%;
+        width: 80%;
+        margin-left: 10%;
+    }
+    .inscription .fas .fa-user-plus {
+        font-size: 40px;
+    }
+}

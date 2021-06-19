@@ -1,0 +1,330 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    min-width: 200px;
+    font-family: 'Roboto', sans-serif;
+    overflow: scroll;
+}
+
+header {
+    text-transform: uppercase;
+    background-color: #FFF;
+    padding: 20px 0 20px 32px;
+    font-size: 15px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .4);
+}
+
+#logo,
+nav,
+li {
+    display: inline-block;
+}
+
+#logo {
+    width: 220px;
+}
+
+#logo img {
+    max-width: 100%;
+    height: auto;
+    margin-top: -5%;
+}
+
+nav {
+    display: inline-block;
+    line-height: 48px;
+    vertical-align: top;
+}
+
+li {
+    margin-left: 32px;
+}
+
+li a,
+.button {
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+li a {
+    color: black;
+}
+
+.button {
+    float: right;
+    text-transform: uppercase;
+    line-height: 40px;
+    height: 40px;
+    text-decoration: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    color: #FFFFFF;
+}
+
+.button-sign-out {
+    background-image: linear-gradient( 178.2deg, rgba(118, 8, 23, 1) 10.9%, rgba(158, 12, 33, 1) 62.6%);
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.button-infos {
+    margin-right: 10px;
+    background-color: #131110;
+}
+
+#hamburger,
+#hamburger-content {
+    display: inline;
+}
+
+#hamburger-button,
+#hamburger-croix {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0;
+    vertical-align: top;
+    float: right;
+    margin-right: 15px;
+    line-height: 40px;
+}
+
+#hamburger-overlay {
+    display: none;
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(175, 29, 29, 0.4);
+}
+
+#hamburger-sidebar {
+    display: none;
+    position: fixed;
+    width: 84%;
+    z-index: 20;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgba(3, 19, 46, 1) 0%, rgba(28, 19, 19, 1) 90%);
+    transform: translateX(-100%);
+    transition: transform .4s ease-out;
+}
+
+#hamburger-sidebar li {
+    display: block;
+}
+
+#hamburger-sidebar-header {
+    background-image: linear-gradient( 178.2deg, rgba(118, 8, 23, 1) 10.9%, rgba(158, 12, 33, 1) 62.6%);
+    background-size: cover;
+    height: 130px;
+}
+
+#hamburger-sidebar-body {
+    padding: 16px 8px;
+}
+
+#hamburger-sidebar-body li:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+    margin-bottom: 4px;
+}
+
+#hamburger-sidebar-body .button {
+    float: none;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    height: auto;
+    padding: 14px;
+    line-height: inherit;
+}
+
+.site-footer {
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgba(3, 19, 46, 1) 0%, rgba(28, 19, 19, 1) 90%);
+    font-size: 15px;
+    line-height: 24px;
+    color: white;
+    margin-top: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+#navHeaderFooter {
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(228, 224, 224);
+    box-shadow: 0 -5px 2px -5px #333;
+}
+
+#navHeaderFooter:hover i {
+    width: 100%;
+    color: rgb(202, 30, 30);
+    cursor: pointer;
+}
+
+#navHeaderFooter i {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+.site-footer a {
+    color: #b8b8b8;
+}
+
+.site-footer .bodyFooter {
+    padding: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid grey;
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgb(56, 57, 59) 0%, rgb(68, 65, 65) 90%);
+    width: 100%;
+}
+
+.site-footer .bodyFooter .row {
+    border-left: 2px solid red;
+    padding-top: 20px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-footer .bodyFooter .row h3 {
+    font-size: 18px;
+}
+
+.site-footer .bodyFooter .row .footer-links {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-footer .bodyFooter .row .footer-links li {
+    display: flex;
+    justify-content: left;
+    margin-left: 0px;
+}
+
+.bodyLogo {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgb(73, 77, 83) 0%, rgb(49, 43, 43) 90%);
+}
+
+.bodyLogo #logoFooter {
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgb(170, 172, 175) 0%, rgba(28, 19, 19, 1) 90%);
+    width: 20%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#logoFooter img {
+    max-width: 100%;
+    height: auto;
+}
+
+.site-footer #basFooter {
+    background-image: radial-gradient( circle farthest-corner at 90.8% 12.5%, rgba(3, 19, 46, 1) 0%, rgba(28, 19, 19, 1) 90%);
+    margin-top: 30px;
+    width: 100%;
+    bottom: 0;
+    padding: 20px;
+}
+
+@media screen and (max-width: 1124px) {
+    #hamburger-button:hover,
+    #hamburger-croix:hover {
+        color: rgba(118, 8, 23, 1);
+        transform: rotate(180deg);
+        transition: 300ms linear all;
+    }
+    h1 {
+        font-size: 42px;
+        line-height: 56px;
+    }
+    #hamburger-content {
+        display: none;
+    }
+    #hamburger-button,
+    #hamburger-sidebar,
+    .hamburger-activated #hamburger-overlay {
+        display: block;
+    }
+    .hamburger-activated #hamburger-sidebar {
+        transform: translateX(0);
+    }
+    li a,
+    .button,
+    li i {
+        text-decoration: none;
+        color: rgb(230, 224, 224);
+    }
+    .button-sign-out,
+    .button-infos {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .button-infos {
+        background-color: rgb(39, 38, 38);
+    }
+}
+
+@media screen and (max-width: 1124px) {
+    .site-footer .bodyFooter .row {
+        width: 80%;
+        margin-left: 10%;
+        border-bottom: 2px solid red;
+        border-left: none;
+    }
+    .site-footer .bodyFooter {
+        flex-direction: column;
+    }
+    .site-footer .bodyFooter .row .footer-links li {
+        justify-content: center;
+    }
+    .bodyLogo #logoFooter {
+        width: 30%;
+        margin-top: 5%;
+    }
+}

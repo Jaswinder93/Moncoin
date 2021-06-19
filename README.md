@@ -1,2 +1,0 @@
-# Moncoin
-Site - Boutique électronique
