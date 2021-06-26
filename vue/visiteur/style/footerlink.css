@@ -1,0 +1,64 @@
+#infoFooter {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+#infoMoncoin,
+#support,
+#aVenir,
+#contacts {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 4%;
+    padding: 5%;
+}
+
+#infoMoncoin h4,
+#support h4,
+#aVenir h4,
+#contacts h4 {
+    margin-top: 3%;
+    font-size: 18px;
+    border-bottom: 1px solid grey;
+}
+
+#infoMoncoin p,
+#support p,
+#aVenir p,
+#contacts p {
+    margin-top: 4%;
+    color: grey;
+}
+
+#infoMoncoin h3,
+#support h3,
+#aVenir h3,
+#contacts h3 {
+    color: red;
+    font-size: 25px;
+    text-align: center;
+}
+
+#infoFooter p a {
+    color: rgb(146, 5, 5);
+}
+
+#infoFooter p a:hover {
+    color: blue;
+}
+
+@media screen and (max-width: 650px) {
+    #infoMoncoin,
+    #support,
+    #aVenir,
+    #contacts {
+        width: 100%;
+        margin-left: 0%;
+    }
+}

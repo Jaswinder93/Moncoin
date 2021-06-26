@@ -1,0 +1,182 @@
+.contentForm {
+    margin-top: 2%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    width: 60%;
+    margin-left: 20%;
+    background-color: rgb(255, 250, 250);
+}
+
+.contentForm .formdebut {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding: 30px
+}
+
+.contentForm .formdebut input {
+    margin-left: 25%;
+    margin-top: 5%;
+    width: 50%;
+    padding: 8px;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.contentForm .formdebut input:hover {
+    background-color: rgb(241, 137, 0);
+    border: 1px solid black;
+}
+
+.contentForm .formdebut {
+    margin-top: 5%;
+}
+
+.contentForm .formdebut h3 {
+    margin-top: 5%;
+    font-size: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.contentForm .formdebut select {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 5%;
+}
+
+.contentForm .formdebut select:focus {
+    border: 2px solid rgb(233, 134, 5);
+    outline: none;
+}
+
+#choiceProduct {
+    margin-top: 4%;
+    width: 80%;
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    margin-left: 10%;
+}
+
+.formProduit {
+    width: 90%;
+    margin-left: 5%;
+    padding: 3%;
+    display: flex;
+}
+
+.formProduit .img-hover-zoom {
+    width: 50%;
+    padding: 8%;
+    border-radius: 5px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    background-color: rgb(255, 245, 245);
+}
+
+.infosProduit {
+    width: 50%;
+    margin-left: 3%;
+    float: right;
+}
+
+.infosProduit .titreProd {
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+.infosProduit .categProd,
+.infosProduit .vendeurProd {
+    border-bottom: 1px solid black;
+}
+
+.img-hover-zoom img {
+    transition: transform .5s ease;
+}
+
+.formProduit .img-hover-zoom:hover img {
+    transform: scale(1.3);
+}
+
+.infosProduit span {
+    color: gray;
+    font-size: 14px;
+}
+
+.formProduit img {
+    width: 90%;
+    margin: auto;
+}
+
+.formProduit .qteProd {
+    color: rgb(88, 2, 2);
+    margin-bottom: 5%;
+}
+
+.formProduit .prixProd {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.formProduit .descProd {
+    font-size: 15px;
+    margin-top: 2%;
+}
+
+.formProduit .formProd {
+    margin-top: 5%;
+}
+
+@media screen and (max-width: 850px) {
+    .formProduit {
+        flex-wrap: wrap;
+    }
+    .formProduit .img-hover-zoom:hover img {
+        transform: scale(1.1);
+    }
+    .infosProduit {
+        width: 100%;
+        margin-top: 5%;
+    }
+    .formProduit .img-hover-zoom {
+        width: 80%;
+        margin-left: 10%;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 1px 0px, rgba(60, 64, 67, 0.15) 0px 1px 1px 1px;
+        margin-bottom: 10%;
+    }
+    .formProduit .formProd {
+        width: 60%;
+        margin-left: 20%;
+    }
+    .infosProduit .titreProd {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .contentForm .formdebut {
+        width: 100%;
+    }
+    .contentForm .formdebut h3 {
+        font-size: 16px;
+    }
+    .formProduit .descProd,
+    .formProduit .categProd {
+        font-size: 13px;
+    }
+    .infosProduit .vendeurProd {
+        font-size: 15px;
+    }
+    .contentForm {
+        width: 90%;
+        margin-left: 5%;
+    }
+    .formProduit .formProd {
+        width: 100%;
+        margin-left: 0%;
+    }
+}

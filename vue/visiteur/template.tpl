@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:500" />
     <link rel="stylesheet" type="text/css" href="../vue/visiteur/style/template.css" />
+    <link rel="stylesheet" type="text/css" href="../vue/visiteur/style/produit.css" />
+    <link rel="stylesheet" type="text/css" href="../vue/visiteur/style/footerlink.css" />
+    
+    <link rel="icon" type="image/png" href="../vue/visiteur/img/M.png" />
     <link rel="stylesheet" type="text/css" href="../vue/visiteur/style/formInscritIdentification.css" />
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" type="text/css" href="../vue/visiteur/style/accueil.css" />
@@ -28,8 +32,8 @@
             <nav >
                 <ul>
                     <li><a href="/visiteur/accueil">Moncoin</a></li>
-                    <li><a href="#"></i></i>Produits</a></li>
-                    <li><i class="fas fa-cart-plus"></i>&nbsp;<a href="/visiteur/identification">Panier</a></li>
+                    <li><a href="/visiteur/produit"></i></i>Produits</a></li>
+                    <li><i class="fas fa-cart-plus"></i>&nbsp;<a href="/visiteur/panier">Panier</a></li>
                 </ul>
             </nav>
                 <a href="/visiteur/identification" class="button button-sign-in"><i
@@ -56,25 +60,27 @@
             <div class="row">
                 <h3>Categories</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Vêtements</a></li>
-                    <li><a href="#">Informatique</a></li>
-                    <li><a href="#">Jardinerie</a></li>
-                    <li><a href="#">Chaussures</a></li>
-                    <li><a href="#">Bijoux</a></li>
+                    <li><a href="/visiteur/produit?categorie=Vêtements#bgdebut">Vêtements</a></li>
+                    <li><a href="/visiteur/produit?categorie=Informatique#bgdebut">Informatique</a></li>
+                    <li><a href="/visiteur/produit?categorie=Livres#bgdebut">Livres</a></li>
+                    <li><a href="/visiteur/produit?categorie=Chaussures#bgdebut">Chaussures</a></li>
+                    <li><a href="/visiteur/produit?categorie=Bijoux#bgdebut">Bijoux</a></li>
+                    <li><a href="/visiteur/produit?categorie=Jeux-DVD#bgdebut">Jeux/DVD</a></li>
+                    <li><a href="/visiteur/produit?categorie=Logiciels#bgdebut">Logiciels</a></li>
                 </ul>
             </div>
             <div class="row">
                 <h3>A propos</h3>
                 <ul class="footer-links">
-                    <li><a href="/">Informations sur Moncoin</a></li>
-                    <li><a href="/">A venir</a></li>
+                    <li><a href="/visiteur/footer?info=infoMoncoin">Informations sur Moncoin</a></li>
+                    <li><a href="/visiteur/footer?info=futur">A venir</a></li>
                 </ul>
             </div>
             <div class="row">
                 <h3>Aides</h3>
                 <ul class="footer-links">
-                    <li><a href="/">Contact support</a></li>
-                    <li><a href="/">Coordonnées entreprise</a></li>
+                    <li><a href="/visiteur/footer?info=support">Contact support</a></li>
+                    <li><a href="/visiteur/footer?info=coordonnees">Coordonnées entreprise</a></li>
                 </ul>
             </div>
         </div>
@@ -92,7 +98,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="../vue/visiteur/js/template.js"></script>
-  <script  type="text/javascript" src="../vue/visiteur/js/accueil.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
     <body>

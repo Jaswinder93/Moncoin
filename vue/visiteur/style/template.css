@@ -33,7 +33,7 @@ body {
     min-height: 500px;
     font-family: 'Roboto', sans-serif;
     overflow: scroll;
-    background-color: #CFDEF3;
+    background-image: linear-gradient(rgb(222, 248, 246), white);
 }
 
 html {

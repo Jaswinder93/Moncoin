@@ -9,13 +9,18 @@ class Router{
     try{
             if (isset($_GET['controle']) & isset($_GET['action'])) {
                 $controle = $_GET['controle'];
+                if($controle=='visiteur'){
+                    
+                    $_SESSION['profil'] = array();
+                    }
                 $action= $_GET['action'];
             }
             else { //absence de paramètres : prévoir des valeurs par défaut
+                
                 $controle = isset($_SESSION['profil']['typeUtilisateur'])?$_SESSION['profil']['typeUtilisateur']:'visiteur';
                 $action= "accueil";
             }
-            
+
             $fileController = "controle/".$controle.".php";
             if(file_exists($fileController)){
                 require_once($fileController);

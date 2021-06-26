@@ -4,9 +4,9 @@
 
 
 <section id="contenuPage">
-<p>
-<?=$this->msg; ?>
-</p>
+    <p>
+        <?=$this->msg; ?>
+    </p>
     <div class="containerInscription">
         <div class="inscription">
             <i class="fas fa-user-plus"></i>
@@ -49,8 +49,8 @@
                     <div class="col-75">
                         <input id="mypass" type="password" name="password" minlength="6" maxlength="40"
                             placeholder="entrez votre mot de passe" required>
-                            <div class="eye"><i class="far fa-eye one"></i><i class="fas fa-eye-slash one"></i></div>
-                   
+                        <div class="eye"><i class="far fa-eye one"></i><i class="fas fa-eye-slash one"></i></div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -69,8 +69,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" minlength="2" name="questSec" maxlength="40"
-                            
-                            placeholder="entrez votre réponse secrète" required>
+                            placeholder="entrez votre question secrète" required>
                     </div>
                 </div>
                 <div class="row">
@@ -78,9 +77,9 @@
                         <label for="repSec">Réponse secrète :</label>
                     </div>
                     <div class="col-75">
-                        <input type="text" minlength="2" name="repSec" pattern="[a-zA-Z0-9-]{1,}" maxlength="40"
-                            title="- Seulement les lettres, tirêts et les chiffres sont acceptés"
-                            placeholder="entrez votre réponse secrète" required>
+
+                        <input type="text" minlength="5" name="repSec" maxlength="40"
+                            placeholder="entrez la réponse secrète" required>
                     </div>
                 </div>
                 <div class="row">
@@ -106,10 +105,10 @@
                 <input type="submit" name="valider" placeholder="Valider">
             </form>
             <div class="row">
-            <p style="color:rgb(158, 4, 4);">
-            <?=$this->msgError; ?>
-        </p>
-        </div>
+                <p style="color:rgb(158, 4, 4);">
+                    <?=$this->msgError; ?>
+                </p>
+            </div>
         </div>
 
     </div>

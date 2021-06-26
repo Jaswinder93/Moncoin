@@ -2,6 +2,10 @@
     $this->t = "Identification";
 ?>
 
+<?php if(!is_null($this->msg)){?>
+<p style="width:80%;text-align:center;padding:4px;margin-top:5%;margin-left:10%;border:1px solid black; background-color:rgb(255, 60, 0)"><?=$this->msg; ?></p>
+<?php } ?>
+
 <section id="contenuIdentification">
     <div class="containerIdentification">
         <div class="identification">
@@ -38,5 +42,4 @@
 
     </div>
     
-    <p><?=$this->msg; ?></p>
 </section>

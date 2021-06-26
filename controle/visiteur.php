@@ -1,10 +1,17 @@
 
 <?php
 require_once('vue/View.php');
+
 function accueil()
 {
+    
+    require("./modele/visiteur/visiteurBD.php");
+    $contenu = array();
+    $contenu=recupProduits($contenu);
     $view = new View('visiteur/accueil');
+    $view->setContentArray($contenu);
     $view->generate();
+
 }
 
 
@@ -187,5 +194,41 @@ function chgMotDePasse()
 }
 
 
+/*clique sur un produit*/
+function produit(){
+    
+    require("./modele/visiteur/visiteurBD.php");
+    if (count($_POST) == 0) {
+        $view = new View('visiteur/produit');
+        $view->generate();
+    }else{
+        $view = new View('visiteur/produit');
+        $contenu = array();
+        $contenu=recupProduit($_POST['produit']);
+        $view->setContentArray($contenu);
+        $view->generate();
+    }
 
+   
+}
+
+function ajoutPanier(){
+    $view = new View('visiteur/identification');
+    $view->setMsg("Veuillez vous connecter pour pouvoir effectuer un achat");
+    $view->generate();
+}
+
+function panier(){
+    $view = new View('visiteur/identification');
+    $view->setMsg("Veuillez vous connecter pour pouvoir accéder au panier");
+    $view->generate();
+}
+
+
+
+function footer()
+{
+    $view = new View('visiteur/infofooter');
+    $view->generate();
+}
 ?>

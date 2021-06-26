@@ -110,3 +110,104 @@ function checkMdpIdentique($mdp_one, $login)
             die(); // On arrête le script php
         }
 }
+
+function recupProduits($contenu)
+{
+    require("./modele/connexionBD.php");
+    $sql_ajt = "SELECT * from `produit` ORDER BY idProduit desc";
+    try {
+        $statement = $pdo->prepare($sql_ajt);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rowAll = $statement->fetchAll(); // fetchAll() car PLUSIEURS LIGNES récupérées
+        //Verification si compte existe
+        if (count($rowAll) > 0) {
+            for($i=0;$i<count($rowAll);$i++){
+                $contenu[$i] = $rowAll[$i];
+                $user=recupVendeur($contenu[$i]['idVendeur']);
+                $contenu[$i]["utilisateur"]=$user;
+            }
+            //var_dump($contenu[0]);
+            return $contenu;
+        }
+        $contenu = array();
+        return $contenu;
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die();
+    }
+}
+
+
+function recupProduitsCateg($contenu,$categorie)
+{
+    require("./modele/connexionBD.php");
+    $sql_ajt = "SELECT * from `produit` where Categorie=:categorie ORDER BY idProduit desc";
+    try {
+        $statement = $pdo->prepare($sql_ajt);
+        $statement->bindParam(':categorie', $categorie);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->execute();
+        $rowAll = $statement->fetchAll(); // fetchAll() car PLUSIEURS LIGNES récupérées
+        //Verification si compte existe
+        if (count($rowAll) > 0) {
+            for($i=0;$i<count($rowAll);$i++){
+                $contenu[$i] = $rowAll[$i];
+                $user=recupVendeur($contenu[$i]['idVendeur']);
+                $contenu[$i]["utilisateur"]=$user;
+            }
+            //var_dump($contenu[0]);
+            return $contenu;
+        }
+        $contenu = array();
+        return $contenu;
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die();
+    }
+}
+
+function recupProduit($id)
+{
+    require("./modele/connexionBD.php");
+    $sql_ajt = "SELECT * from `produit`  where idProduit=:id";
+    try {
+        $statement = $pdo->prepare($sql_ajt);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $rowAll = $statement->fetchAll(PDO::FETCH_BOTH);
+        
+        if (count($rowAll) > 0) {
+                $contenu = $rowAll;
+                $user=recupVendeur($contenu[0]['idVendeur']);
+                $contenu[0]["utilisateur"]=$user;
+            return $contenu;
+        }
+        $contenu = array();
+        return $contenu;
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die();
+    }
+}
+
+function recupVendeur($id){
+    require("./modele/connexionBD.php");
+    $sql_ajt = "SELECT * from `utilisateur` where idUtilisateur=:id";
+    try {
+        $statement = $pdo->prepare($sql_ajt);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        $rowAll = $statement->fetchAll(PDO::FETCH_BOTH); // fetchAll() car PLUSIEURS LIGNES récupérées
+        //Verification si compte existe
+        if (count($rowAll) > 0) {
+            $contenu = $rowAll[0];
+            return $contenu;
+        }
+        $contenu = array();
+        return $contenu;
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die();
+    }
+}

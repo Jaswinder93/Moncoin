@@ -30,8 +30,14 @@ table {
 
 body {
     min-width: 200px;
+    min-height: 500px;
     font-family: 'Roboto', sans-serif;
     overflow: scroll;
+    background-image: linear-gradient(rgb(222, 248, 246), white);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 header {
@@ -42,6 +48,16 @@ header {
     box-shadow: 0 1px 10px rgba(0, 0, 0, .4);
 }
 
+#contenuPage {
+    height: 100%;
+}
+
+#logo img {
+    max-width: 100%;
+    height: auto;
+    margin-top: -5%;
+}
+
 #logo,
 nav,
 li {
@@ -50,12 +66,6 @@ li {
 
 #logo {
     width: 220px;
-}
-
-#logo img {
-    max-width: 100%;
-    height: auto;
-    margin-top: -5%;
 }
 
 nav {
@@ -90,17 +100,21 @@ li a {
 }
 
 .button-sign-out {
-    background-image: linear-gradient( 178.2deg, rgba(118, 8, 23, 1) 10.9%, rgba(158, 12, 33, 1) 62.6%);
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
     border: none;
     color: #FFFFFF;
     text-align: center;
     transition: all 0.5s;
     cursor: pointer;
+    margin-right: 40px;
 }
 
-.button-infos {
-    margin-right: 10px;
-    background-color: #131110;
+.button-info {
+    margin-right: 30px;
+    background-color: rgb(54, 53, 53);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
 }
 
 #hamburger,
@@ -208,6 +222,38 @@ li a {
     font-size: 20px;
 }
 
+#hamburger-content ul li a:hover {
+    color: red;
+}
+
+.dropdown {
+    visibility: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    width: 20%;
+}
+
+.hoverDown:hover .dropdown {
+    visibility: visible;
+}
+
+.dropdown li {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.dropdown li a {
+    width: 100%;
+    text-align: center;
+}
+
 .site-footer a {
     color: #b8b8b8;
 }
@@ -272,16 +318,92 @@ li a {
     padding: 20px;
 }
 
-@media screen and (max-width: 1124px) {
-    #hamburger-button:hover,
+
+/* Page erreur */
+
+.errorPage {
+    width: 80%;
+    margin-left: 10%;
+    min-height: 200px;
+    background: linear-gradient(0deg, #fff, #03a9f4);
+}
+
+.ciel {
+    margin-top: 1%;
+    position: relative;
+    widows: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ciel h2 span {
+    display: inline-block;
+    animation: animate 2s ease-in-out infinite;
+}
+
+.ciel h2 span:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.route {
+    padding-top: 10%;
+    height: 40vh;
+    text-align: center;
+    background: darkslategray;
+    box-shadow: inset 0 18px 9px #11110f;
+}
+
+.route h4 {
+    color: white;
+    font-size: 2em;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.route a {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 20px;
+    width: 150px;
+    display: inline-block;
+    border-left: 0 solid #00ff99;
+    transition: border-left 300ms ease-in-out, padding-left 300ms ease-in-out;
+}
+
+.route a:hover {
+    padding-left: 0.5rem;
+    border-left: 0.5rem solid #00ff99;
+}
+
+@keyframes animate {
+    0%,
+    100% {
+        transform: translateY(-20%);
+    }
+    50% {
+        transform: translateY(50px);
+    }
+}
+
+.ciel h2 {
+    font-size: 12em;
+    color: black;
+    text-shadow: 13px 13px 0 rgb(134, 130, 130);
+}
+
+
+/***accueil***/
+
+@media screen and (max-width: 1200px) {
     #hamburger-croix:hover {
         color: rgba(118, 8, 23, 1);
         transform: rotate(180deg);
         transition: 300ms linear all;
-    }
-    h1 {
-        font-size: 42px;
-        line-height: 56px;
     }
     #hamburger-content {
         display: none;
@@ -298,25 +420,18 @@ li a {
     .button,
     li i {
         text-decoration: none;
-        color: rgb(230, 224, 224);
+        color: rgb(219, 207, 207);
     }
     .button-sign-out,
-    .button-infos {
+    .button-info {
         width: 60%;
         margin-left: 20%;
     }
-    .button-infos {
-        background-color: rgb(39, 38, 38);
-    }
-}
-
-@media screen and (max-width: 1024px) {
     .site-footer .bodyFooter .row {
         width: 80%;
         margin-left: 10%;
         border-bottom: 2px solid red;
         border-left: none;
-        padding-bottom: 10px;
     }
     .site-footer .bodyFooter {
         flex-direction: column;
@@ -327,5 +442,39 @@ li a {
     .bodyLogo #logoFooter {
         width: 30%;
         margin-top: 5%;
+    }
+    .route h4 {
+        font-size: 25px;
+        width: 100%;
+    }
+    .ciel h2 {
+        text-shadow: 10px 10px 0 rgb(134, 130, 130);
+    }
+    .dropdown {
+        width: 50%;
+    }
+    .dropdown li a {
+        color: black;
+    }
+    li a:hover {
+        color: red;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .ciel h2 {
+        font-size: 8em;
+        text-shadow: 7px 7px 0 rgb(134, 130, 130);
+    }
+    .ciel {
+        margin-top: 10%;
+        height: 35vh;
+    }
+    .route h4 {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+    .dropdown {
+        width: 80%;
     }
 }

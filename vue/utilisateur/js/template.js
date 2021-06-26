@@ -35,6 +35,7 @@ window.onresize = window.onload = function() {
         croix.style.display = 'none';
         if (activatedClass != null) {
             head.classList.remove(activatedClass);
+            body.style.overflow = "scroll";
         }
     } else {
         if (croix.style.display === 'none') {

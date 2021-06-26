@@ -22,7 +22,7 @@
                         <label for="questSec">Votre question secrète :</label>
                     </div>
                     <div class="col-75">
-                        <label style="color:green;" ="questSec"><?=$this->contentArray['questionSecrete'];?></label>
+                        <label style="color:rgb(10, 136, 10);" class="questSec"><?=$this->contentArray['questionSecrete'];?></label>
                     </div>
                 </div>
                 <div class="row">

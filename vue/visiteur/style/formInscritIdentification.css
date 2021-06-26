@@ -22,7 +22,7 @@
 
 .containerInscription {
     border-radius: 5px;
-    background-image: linear-gradient( 178.2deg, rgba(118, 8, 23, 1) 10.9%, rgba(158, 12, 33, 1) 62.6%);
+    background-image: linear-gradient( 178.2deg, rgb(211, 35, 58) 10.9%, rgb(201, 47, 70) 62.6%);
     padding: 10px;
 }
 
@@ -140,7 +140,7 @@
 
 .containerIdentification {
     border-radius: 5px;
-    background-image: radial-gradient( circle farthest-corner at -1% 57.5%, rgba(19, 170, 82, 1) 0%, rgba(0, 102, 43, 1) 90%);
+    background-image: radial-gradient( circle farthest-corner at -1% 57.5%, rgb(46, 226, 121) 0%, rgb(47, 214, 116) 90%);
     padding: 10px;
 }
 
