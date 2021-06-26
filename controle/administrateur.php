@@ -124,6 +124,7 @@ function editUser(){
         gestionUser();
     } else {
         try {
+            $login = isset($_POST['login']) ? ($_POST['login']) : '';
             $id = isset($_POST['id']) ? ($_POST['id']) : '';
             $nom = isset($_POST['nom']) ? ($_POST['nom']) : '';
             $prenom = isset($_POST['prenom']) ? ($_POST['prenom']) : '';
@@ -132,7 +133,7 @@ function editUser(){
             $adresse = isset($_POST['adresse']) ? ($_POST['adresse']) : '';
             $repSec = isset($_POST['repSec']) ? ($_POST['repSec']) : '';
             $questSec = isset($_POST['questSec']) ? ($_POST['questSec']) : '';
-            if (!updateUser($id,$nom, $prenom, $login, $mail,$questSec,$repSec,$adresse, $telephone)) {
+            if (!updateUser($id,$nom, $prenom, $mail,$questSec,$repSec,$adresse, $telephone)) {
                 $msg = "Erreur dans le changement, veuillez essayer plus tard !";
                 $view = new View('administrateur/gestionUser');
                 $contenu = array();

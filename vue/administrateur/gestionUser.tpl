@@ -142,11 +142,11 @@ $this->t = "Gestionnaire user";
             <div>
                 <form class="formInformationsAdd">
                     <div>
-                        <label for="nom">Mon nom :</label>
+                        <label for="nom">Nom :</label>
                         <input value="<?php echo $user['nom'];?>" readonly><br>
                     </div>
                     <div>
-                        <label for="prenom">Mon prénom :</label>
+                        <label for="prenom">Prénom :</label>
                         <input value="<?php echo $user['prenom'];?>" readonly>
                     </div>
                     <div>
@@ -204,8 +204,9 @@ $this->t = "Gestionnaire user";
                          $user=$this->contentArray[$_GET['ind']];
                          ?>
                 <div>
-                    <p>Vous confirmez vouloir supprimer l'utilisateur suivant ?</p>
+                    <p>Confirmation de suppression ?</p>
                 </div>
+
                 <div>
                     <form class="formInformationsAdd" action="deleteUser" method="post">
                         <div>
@@ -260,13 +261,80 @@ $this->t = "Gestionnaire user";
         </div>
     </div>
 </div>
+
 <div id="menuEdit" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <a href="/administrateur/gestionUser" class="closebtn">×</a>
+            <h2>Edition d'utilisateur</h2>
+
+            <?php
+            if(isset($_GET['ind'])){
+                     $user=array();
+                     if(isset($this->contentArray[$_GET['ind']])){
+                     $user=$this->contentArray[$_GET['ind']];
+                     ?>
             <div>
-                <h2>Edit</h2>
+                <form class="formInformationsAdd" action="editUser" method="post">
+                    <div>
+                        <label for="id">Identifiant :</label>
+                        <input style="background-color:grey" ="id" type="text" name="id" value="<?php echo $user['idUtilisateur']; ?>" readonly><br>
+                    </div>
+                    
+                    <div>
+                        <label for="login">Login :</label>
+                        <input style="background-color:grey" type="text" minlength="5" name="login" value="<?php echo $user['login']; ?>" readonly>
+                    </div>
+                    <div>
+                        <label for="nom">Nom :</label>
+                        <input id="nameInfo" type="text" name="nom" pattern="[A-Za-z-]{1,}" maxlength="40"
+                            title="- seulement les lettres et les tirêts sont acceptés"
+                            value="<?php echo $user['nom']; ?>"><br>
+                    </div>
+                    <div>
+                        <label for="prenom">Prénom :</label>
+                        <input id="prenomInfo" type="text" name="prenom" pattern="[A-Za-z-]{1,}" maxlength="40"
+                            title="- seulement les lettres et les tirêts sont acceptés"
+                            value="<?php echo $user['prenom']; ?>"><br>
+                    </div>
+                    <div>
+                        <label for="mail">Adresse mail :</label>
+                        <input type="text" name="mail" maxlength="40"
+                            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" title="xxxx@xxxxx.xxx"
+                            value="<?php echo $user['mail']; ?>" required>
+                    </div>
+                    <div>
+                        <label for="questSec">Question secrète :</label>
+                        <input type="text" minlength="5" name="questSec" maxlength="40"
+                            value="<?php echo $user['questionSecrete']; ?>" required>
+                    </div>
+                    <div>
+                        <label for="repSec">Réponse secrète :</label>
+
+                        <input type="text" minlength="5" name="repSec" maxlength="40"
+                            value="<?php echo $user['reponseSecrete']; ?>" required>
+                    </div>
+                    <div>
+                        <label for="tel">Téléphone :</label>
+                        <input type="tel" minlength="10" maxlength="15" pattern="[0-9]{1,}"
+                            title="format chiffres, 10 à 15" name="telephone" value="<?php echo $user['tel']; ?>"
+                            required>
+                    </div>
+                    <div>
+                        <label for="adresse">Adresse :</label>
+                        <input type="text" maxlength="48" name="adresse" value="<?php echo $user['adresse']; ?>"
+                            required>
+                    </div>
+                    <div>
+                        <input id="modifBtn" type="submit" value="Confirmer le changement">
+                    </div>
+                </form>
             </div>
+
+            <?php
+                     }else echo "<p>Veuillez choisir un utilisateur !</p>";
+                 }else echo "<p>Veuillez choisir un utilisateur !</p>";
+             ?>
         </div>
     </div>
 </div>

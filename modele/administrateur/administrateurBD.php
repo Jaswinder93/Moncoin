@@ -139,6 +139,8 @@ function updateUser($id, $nom, $prenom, $mail, $questSec, $repSec, $adresse, $te
         $statement->bindParam(':tel', $tel);
         $statement->bindParam(':id', $id);
         $statement->execute();
+        return true;
+
     } catch (PDOException $e) {
         echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
         die();
