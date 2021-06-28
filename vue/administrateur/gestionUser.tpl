@@ -22,14 +22,16 @@ $this->t = "Gestionnaire user";
     <table class="tabGestion">
         <thead>
             <tr>
-                <th>idUtilisateur</th>
+                <th>id Utilisateur</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th colspan="3">Edition</th>
             </tr>
         </thead>
         <tbody>
-            <?php for($i =0; $i<$nb_user;$i++){?>
+            <?php for($i =0; $i<$nb_user;$i++){
+                if($this->contentArray[$i]['typeUtilisateur']=='utilisateur'){
+                ?>
             <tr>
                 <td>
                     <?=$this->contentArray[$i]['idUtilisateur'];?>
@@ -48,7 +50,29 @@ $this->t = "Gestionnaire user";
                 <td><a href="/administrateur/gestionUser?ind=<?php echo $i;?>#menuDelete"><i
                             class="fas fa-trash-alt"></i></a></td>
             </tr>
-            <?php }?>
+            <?php 
+                }else {?>
+                <tr>
+                <td>
+                    <?=$this->contentArray[$i]['idUtilisateur'];?>
+                </td>
+
+                <td>
+                    <?=$this->contentArray[$i]['nom'];?>
+                </td>
+                <td>
+                    <?=$this->contentArray[$i]['prenom'];?>
+                </td>
+                <td><a href="/administrateur/gestionUser?ind=<?php echo $i;?>#menuVoir"><i class="far fa-eye"></i></a>
+                </td>
+                <td style="background-color: grey";>Admin</td>
+                <td style="background-color: grey";>Admin</td>
+            </tr>
+
+
+        <?php
+                }
+            }?>
         </tbody>
     </table>
 
@@ -94,7 +118,7 @@ $this->t = "Gestionnaire user";
                     <div>
                         <label for="mail">Adresse mail :</label>
                         <input type="text" name="mail" maxlength="40"
-                            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" title="xxxx@xxxxx.xxx"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="xxxx@xxxxx.xxx"
                             placeholder="entrez l'adresse mail" required>
                     </div>
                     <div>
@@ -300,7 +324,7 @@ $this->t = "Gestionnaire user";
                     <div>
                         <label for="mail">Adresse mail :</label>
                         <input type="text" name="mail" maxlength="40"
-                            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" title="xxxx@xxxxx.xxx"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="xxxx@xxxxx.xxx"
                             value="<?php echo $user['mail']; ?>" required>
                     </div>
                     <div>

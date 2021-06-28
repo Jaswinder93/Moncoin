@@ -114,7 +114,7 @@ function checkMdpIdentique($mdp_one, $login)
 function recupProduits($contenu)
 {
     require("./modele/connexionBD.php");
-    $sql_ajt = "SELECT * from `produit` ORDER BY idProduit desc";
+    $sql_ajt = "SELECT * from `produit` ORDER BY DateTime desc";
     try {
         $statement = $pdo->prepare($sql_ajt);
         $statement->setFetchMode(PDO::FETCH_ASSOC);

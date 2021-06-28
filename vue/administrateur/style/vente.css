@@ -1,0 +1,138 @@
+#sellGestionnaire {
+    background-color: white;
+    margin-top: 4%;
+    padding: 4%;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    text-align: center;
+}
+
+#sellGestionnaire h2 {
+    font-size: 25px;
+    color: rgb(116, 4, 4);
+    border-bottom: 1px solid rgb(99, 4, 4);
+}
+
+#sellGestionnaire a {
+    text-decoration: none;
+    color: rgb(7, 5, 5);
+}
+
+#sellGestionnaire .addProd {
+    background-color: rgb(0, 220, 37);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    width: 200px;
+    margin: 2%;
+    color: rgb(15, 11, 11);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    padding: 3px;
+}
+
+#menuAjoutProd h2,
+#menuVoirProd h2,
+#menuProdDelete h2,
+#menuProdQte h2 {
+    font-size: 24px;
+    margin-top: 2%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#menuVoirProd p,
+#menuProdDelete p {
+    padding: 1%;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(145, 4, 4);
+}
+
+#menuVoirProd {
+    padding-top: 5%;
+}
+
+#menuAjoutProd select#categorie {
+    padding: 2px;
+    border: 1px solid rgb(109, 0, 0);
+    width: 50%;
+}
+
+#menuAjoutProd textarea {
+    border: 1px solid rgb(116, 3, 3);
+}
+
+#ajtProdBtn,
+#formVuProdVoir,
+#modifyQte,
+#cmdValid {
+    margin-top: 4%;
+    float: left;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    float: right;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+#formVuProdVoir {
+    width: 100%;
+}
+
+#formVuProd {
+    width: 100%;
+    padding: 3%;
+}
+
+#formVuProd img {
+    width: 250px;
+}
+
+.formulaireVoirProd {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+}
+
+.infoVuProd {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.infoVuProd div {
+    text-align: center;
+    width: 100%;
+}
+
+.venteCours,
+.ventesVendu {
+    font-size: 18px;
+    text-decoration: underline;
+    margin-top: 5%;
+}
+
+@media screen and (max-width: 700px) {
+    #sellGestionnaire {
+        width: 100%;
+        margin-left: 0;
+    }
+    .tabGestion {
+        width: 100%;
+    }
+    #formVuProd img {
+        width: 210px;
+    }
+}

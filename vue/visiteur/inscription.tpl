@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-75">
                         <input type="text" name="mail" maxlength="40"
-                            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" title="xxxx@xxxxx.xxx"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="xxxx@xxxxx.xxx"
                             placeholder="entrez votre adresse mail" required>
                     </div>
                 </div>

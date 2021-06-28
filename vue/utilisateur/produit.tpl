@@ -4,7 +4,7 @@
 
 
 <div class="contentForm">
-    <form class="formdebut" action="/administrateur/produit#pagination" type="post">
+    <form class="formdebut" action="/utilisateur/produit#pagination" type="post">
         <h3>Chercher par catégorie: </h3>
         <select name='categorie' id="categorie">
             <option value='Vêtements' name='vetement'>Vêtements</option>
@@ -28,46 +28,46 @@
         <h1>Explorez les produits par catégories</h1>
         <div class="carousel" data-flickity='{ "groupCells": true, "autoPlay": true, "imagesLoaded":true }'>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Vêtements#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/vetement.png">
+                <a href="/utilisateur/produit?categorie=Vêtements#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/vetement.png">
 
                 </a>
                 <p>Vêtements</p>
             </div>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Informatique#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/pc.png">
+                <a href="/utilisateur/produit?categorie=Informatique#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/pc.png">
 
                 </a>
                 <p>Informatique</p>
             </div>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Livres#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/book.png">
+                <a href="/utilisateur/produit?categorie=Livres#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/book.png">
                 </a>
                 <p>Livres</p>
             </div>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Chaussures#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/boot.png">
+                <a href="/utilisateur/produit?categorie=Chaussures#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/boot.png">
                 </a>
                 <p>Chaussures</p>
             </div>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Bijoux#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/bijou.png">
+                <a href="/utilisateur/produit?categorie=Bijoux#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/bijou.png">
                 </a>
                 <p>Bijoux</p>
             </div>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Jeux-DVD#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/jeu.png">
+                <a href="/utilisateur/produit?categorie=Jeux-DVD#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/jeu.png">
                 </a>
                 <p>Jeux/DVD</p>
             </div>
             <div class="carousel-cell">
-                <a href="/administrateur/produit?categorie=Logiciels#bgdebut">
-                    <img class="w3-images" src="../vue/administrateur/img/logiciel.png">
+                <a href="/utilisateur/produit?categorie=Logiciels#bgdebut">
+                    <img class="w3-images" src="../vue/utilisateur/img/logiciel.png">
                 </a>
 
                 <p>Logiciels</p>
@@ -97,8 +97,8 @@ if(!is_null($categorie)){
 
 function appelCategories($categorie) {
     $produits=array();
-    require_once('./modele/administrateur/administrateurBD.php');
-    $produits=recupProduitsCategAd($produits,$categorie);
+    require_once('./modele/utilisateur/utilisateurBD.php');
+    $produits=recupProduitsCategUser($produits,$categorie);
     //var_dump($produits);
     echo '<div class="basAccueil">';
         echo '<h1>Explorez les produits de la catégorie '.$categorie.'</h1>';
@@ -142,7 +142,7 @@ function appelCategories($categorie) {
                 if($produits[$i]['QteProduit']>0){
                 echo '<div class="eachProduct">';
                 echo '<div class="eachProductPlace">';
-                echo '<form action="/administrateur/produit#choiceProduct" method="post">';
+                echo '<form action="/utilisateur/produit#choiceProduct" method="post">';
                 echo '<img src="'.$src.'">';
                 echo '<div>';
                 echo '<p class="titreProd">'.$produits[$i]['NomProduit'].'</p>';
@@ -173,10 +173,11 @@ function appelCategories($categorie) {
 
     echo '</div>';
 }
-
 ?>
 
-<?php if (count($_POST) != 0) {
+<?php 
+
+if (count($_POST) != 0) {
     echo '<div id="choiceProduct">';
         $image = $this->contentArray[0]['image'];
         //image path, convertir en base64
@@ -185,7 +186,7 @@ function appelCategories($categorie) {
         $src = 'data: image/jpeg;base64,'.$imageData;
 
         echo '<div class="productChosen">';
-            echo '<form class="formProduit" action="/administrateur/ajoutPanier" method="post">';
+            echo '<form class="formProduit" action="/utilisateur/ajoutPanier" method="post">';
             echo '<div class="img-hover-zoom">';
             echo '<img src="'.$src.'">';
             echo '</div>';

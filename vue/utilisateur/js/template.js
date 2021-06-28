@@ -5,7 +5,6 @@ var overlay = document.querySelector('#hamburger-overlay');
 var activatedClass = 'hamburger-activated';
 var croix = document.querySelector('#hamburger-croix');
 var head = document.getElementById("head");
-
 var body = document.getElementById("bodyPage");
 sidebarBody.innerHTML = content.innerHTML;
 
@@ -30,7 +29,7 @@ croix.addEventListener('click', function(e) {
 var width;
 window.onresize = window.onload = function() {
     width = this.innerWidth;
-    if (width > 1124) {
+    if (width > 1200) {
         button.style.display = 'none';
         croix.style.display = 'none';
         if (activatedClass != null) {
@@ -40,7 +39,55 @@ window.onresize = window.onload = function() {
     } else {
         if (croix.style.display === 'none') {
             button.style.display = 'block';
+
+            body.style.overflow = "scroll";
         }
     }
 
 }
+
+
+
+$(document).ready(function() {
+    // Add smooth scrolling to all links
+    $("#navHeaderFooter").on('click', function(event) {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#head").offset().top
+        }, 600, 'linear');
+    });
+});
+
+
+var eye = document.querySelector(".far.fa-eye.one");
+var noeye = document.querySelector(".fas.fa-eye-slash.one");
+var eyeTwo = document.querySelector(".far.fa-eye.two");
+var noeyeTwo = document.querySelector(".fas.fa-eye-slash.two");
+
+var pswd = document.getElementById("mypass");
+var pswd2 = document.getElementById("mypass2");
+
+document.body.addEventListener('click', function(evt) {
+    if (evt.target.className === 'far fa-eye one') {
+        eye.style.display = 'none';
+        noeye.style.display = 'block';
+        pswd.type = "text";
+    }
+    if (evt.target.className === 'fas fa-eye-slash one') {
+        eye.style.display = 'block';
+        noeye.style.display = 'none';
+        pswd.type = "password";
+    }
+}, false);
+
+document.body.addEventListener('click', function(evt) {
+    if (evt.target.className === 'far fa-eye two') {
+        eyeTwo.style.display = 'none';
+        noeyeTwo.style.display = 'block';
+        pswd2.type = "text";
+    }
+    if (evt.target.className === 'fas fa-eye-slash two') {
+        eyeTwo.style.display = 'block';
+        noeyeTwo.style.display = 'none';
+        pswd2.type = "password";
+    }
+}, false);

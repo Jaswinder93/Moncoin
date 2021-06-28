@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/footerlink.css" />
     <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/informations.css" />
     <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/gestionUser.css" />
+    <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/vente.css" />
+    <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/panier.css" />
+    <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/commande.css" />
     <link rel="icon" type="image/png" href="../vue/administrateur/img/M.png" />
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" type="text/css" href="../vue/administrateur/style/accueil.css" />
@@ -35,9 +38,10 @@
                     <li><a href="/administrateur/produit"></i></i>Produits</a></li>
                     <li class="hoverDown"><i class="fas fa-user-edit"></i>&nbsp;<a> Admin</a>
                         <ul class="dropdown">
-                            <li><a href="/administrateur/gestionUser">Gestions d'utilisateurs</a></li>
-                            <li><a href="#">Mes commandes</a></li>
-                            <li><a href="#">Mes ventes</a></li>
+                          <li><a href="/administrateur/gestionCommande">Gestion de commandes</a></li>
+                            <li><a href="/administrateur/gestionUser">Gestion d'utilisateurs</a></li>
+                            <li><a href="/administrateur/commande">Mes commandes</a></li>
+                            <li><a href="/administrateur/vente">Mes ventes</a></li>
                         </ul>
                     </li>
                     <li><i class="fas fa-cart-plus"></i>&nbsp;<a href="/administrateur/panier">Panier</a>
@@ -48,7 +52,7 @@
             <a href="/administrateur/deconnexion" class="button button-sign-out"><i
                     class="fas fa-sign-in-alt"></i>&nbsp;<span>deconnexion</span></a>
 
-            <a href="/administrateur/informations" class="button button-info"><i
+            <a href="/administrateur/informationsAd" class="button button-info"><i
                     class="fas fa-user-plus"></i>&nbsp;<span>Mes informations</span></span></a>
         </div>
         <button id="hamburger-button">&#9776;</button>
@@ -83,15 +87,15 @@
             <div class="row">
                 <h3>A propos</h3>
                 <ul class="footer-links">
-                    <li><a href="/administrateur/footer?info=infoMoncoin">Informations sur Moncoin</a></li>
-                    <li><a href="/administrateur/footer?info=futur">A venir</a></li>
+                    <li><a href="/administrateur/footerAd?info=infoMoncoinAd">Informations sur Moncoin</a></li>
+                    <li><a href="/administrateur/footerAd?info=futurAd">A venir</a></li>
                 </ul>
             </div>
             <div class="row">
                 <h3>Aides</h3>
                 <ul class="footer-links">
-                    <li><a href="/administrateur/footer?info=support">Contact support</a></li>
-                    <li><a href="/administrateur/footer?info=coordonnees">Coordonnées entreprise</a></li>
+                    <li><a href="/administrateur/footerAd?info=supportAd">Contact support</a></li>
+                    <li><a href="/administrateur/footerAd?info=coordonneesAd">Coordonnées entreprise</a></li>
                 </ul>
             </div>
         </div>

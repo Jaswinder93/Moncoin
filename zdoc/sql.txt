@@ -1,0 +1,39 @@
+SELECT *
+FROM produit
+INNER JOIN contient ON produit.idProduit = contient.idProduit
+
+
+SELECT *
+FROM produit p
+INNER JOIN contient c
+    on c.idProduit= p.idProduit
+INNER JOIN panier PA
+    on PA.idPanier = c.idPanier
+where PA.idUtilisateur=1;
+
+
+SELECT *
+FROM produit p
+INNER JOIN panier PA
+    on PA.idProduit = p.idProduit
+where PA.idUtilisateur=1;
+
+
+
+Montant commande 
+IdUser
+
+
+Inserer commande / recupére la commande ou id=User
+
+SELECT *
+FROM produit p
+INNER JOIN constitue c
+    on c.idProduit= p.idProduit
+INNER JOIN commande co
+    on co.idCommande = c.idCommande
+where co.idCommande=44;
+
+
+Select * from Commande co INNER JOIN constitue c
+    on co.idCommande= c.idCommande INNER JOIN Produit p on c.idProduit=p.idProduit where p.idProduit=103;
