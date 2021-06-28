@@ -25,7 +25,7 @@ $this->t = "Gestionnaire commande";
                 <th>id acheteur</th>
                 <th>Etat Commande</th>
                 <th>Date Commande</th>
-                <th colspan="1">Edition</th>
+                <th colspan="2">Edition</th>
             </tr>
         </thead>
         <tbody>
@@ -48,6 +48,9 @@ $this->t = "Gestionnaire commande";
                 </td>
                 <td><a href="/administrateur/gestionCommande?ind=<?php echo $i;?>#menuEdit"><i
                             class="fas fa-user-edit"></i></a></td>
+                            
+                <td><a href="/administrateur/gestionCommande?ind=<?php echo $i;?>#menuDeleteCmd"><i
+                class="fas fa-trash-alt"></i></a></td>
             </tr>
             <?php }?>
         </tbody>
@@ -55,6 +58,39 @@ $this->t = "Gestionnaire commande";
 
 </div>
 
+<div id="menuDeleteCmd" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a href="/administrateur/gestionCommande" class="closebtn">×</a>
+            <div>
+                <h2>Delete</h2>
+                <?php
+                if(isset($_GET['ind'])){
+                    $prod=array();
+                    if(isset($this->contentArray[$_GET['ind']])){
+                    $prod=$this->contentArray[$_GET['ind']];
+                         ?>
+                <div>
+                    <p>Confirmation de suppression ?</p>
+                    <form class="formInformationsAdd" action="deleteCmd" method="post">
+                        <div>
+                            <label for="id">id commande :</label>
+                            <input name="id" value="<?php echo $prod['idCommande'];?>" readonly><br>
+                        </div>
+                        <div>
+                            <input id="suppressBtn" type="submit" value="Confirmer la suppression">
+                        </div>
+                    </form>
+                </div>
+
+                <?php
+                         }else echo "<p>Veuillez choisir un utilisateur !</p>";
+                     }else echo "<p>Veuillez choisir un utilisateur !</p>";
+                 ?>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="menuEdit" class="modal">
     <div class="modal-dialog">

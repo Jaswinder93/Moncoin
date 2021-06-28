@@ -96,7 +96,7 @@
 }
 
 #formVuProd img {
-    width: 250px;
+    width: 200px;
 }
 
 .formulaireVoirProd {
@@ -133,6 +133,6 @@
         width: 100%;
     }
     #formVuProd img {
-        width: 210px;
+        width: 200px;
     }
 }

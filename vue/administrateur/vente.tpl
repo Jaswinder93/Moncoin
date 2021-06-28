@@ -66,10 +66,9 @@
                 <th>Nom Produit</th>
                 <th>Quantité vendu</th>
                 <th>Date </th>
-                <th>Montant </th>
-
-                <th>Acheteur</th>
-                <th colspan="1">Actions</th>
+                <th>Montant Produit</th>
+                <th>Admin</th>
+                <th colspan="1">Acheteur</th>
             </tr>
         </thead>
         <?php
@@ -82,7 +81,7 @@
         foreach($tabProd as $tab){
         if(isset($tab)){
             $idU=$tab['idUtilisateur'];
-        ?>
+            $idA=$tab['idAdmin'];?>
         <tr>
             <td>
                 <?=$tab['NomProduit'];?>
@@ -97,10 +96,10 @@
            echo date('d-m-Y H:i', $date);?>
             </td>
             <td>
-                <?=$tab['MontantCommande'];?>€
+                <?=$tab['PrixProduit'];?>€
             </td>
-            <td>
-                <?=$tab['idUtilisateur'];?>
+                <td><a href="/administrateur/vente?ind=<?php echo $idA;?>#menuVoir"><i class="far fa-eye"></i></a>
+                
             </td>
             <td><a href="/administrateur/vente?ind=<?php echo $idU;?>#menuVoir"><i class="far fa-eye"></i></a>
             </td>
@@ -115,7 +114,6 @@
         </tbody>
     </table>
 </div>
-
 
 
 <div id="menuAjoutProd" class="modal">
@@ -260,7 +258,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <a href="/administrateur/vente" class="closebtn">×</a>
-            <h2>Informations acheteur</h2>
+            <h2>Informations</h2>
             <?php
            if(isset($_GET['ind'])){
                     $user=array();

@@ -78,6 +78,30 @@ function recupVendeurUser($id)
 }
 
 
+/*Maj des infos utilisateur*/
+function updateUser($id, $nom, $prenom, $mail, $questSec, $repSec, $adresse, $tel)
+{
+    require("./modele/connexionBD.php");
+    $sql_ajt = "Update `utilisateur` SET  `nom`=:nom,`mail`=:mail,`prenom`=:prenom, 
+        `questionSecrete`=:questionSecrete,`reponseSecrete`=:reponseSecrete,`adresse`=:adresse,`tel`=:tel
+                WHERE idUtilisateur=:id";
+    try {
+        $statement = $pdo->prepare($sql_ajt);
+        $statement->bindParam(':nom', $nom);
+        $statement->bindParam(':prenom', $prenom);
+        $statement->bindParam(':mail', $mail);
+        $statement->bindParam(':questionSecrete', $questSec);
+        $statement->bindParam(':reponseSecrete', $repSec);
+        $statement->bindParam(':adresse', $adresse);
+        $statement->bindParam(':tel', $tel);
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+        return true;
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de select : " . $e->getMessage() . "\n");
+        die();
+    }
+}
 /*recup info user de la bdd*/
 function newInfosUser($login)
 {

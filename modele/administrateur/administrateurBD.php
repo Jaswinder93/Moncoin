@@ -232,6 +232,22 @@ function supprimeUser($login)
     }
 }
 
+function supprimeCmd($id)
+{
+    require("./modele/connexionBD.php");
+    $sql_ajt = "DELETE FROM `commande` WHERE idCommande=:idC";
+    try {
+        $statement = $pdo->prepare($sql_ajt);
+        $statement->bindParam(':idC', $id);
+        $statement->execute();
+        return true;
+    } catch (PDOException $e) {
+        return false;
+        die();
+    }
+}
+
+
 
 /** Actions Ventes contenu/Ajout/Suppresion/modifications etc ... **/
 //recupere les ventes de l'utilisateur

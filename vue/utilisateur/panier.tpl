@@ -9,7 +9,7 @@ $nb_panier= sizeof($this->contentArray);
 
 <div id="panierGestionnaire">
     <h2>Mon panier</h2>
-    <a class="consultProd" href="/administrateur/produit">Chercher des produits</a>
+    <a class="consultProd" href="/utilisateur/produit">Chercher des produits</a>
     <table class="tabGestion">
         <thead>
             <tr>
@@ -33,9 +33,9 @@ $nb_panier= sizeof($this->contentArray);
                 <td>
                     <?=$this->contentArray[$i]['nbProduits'];?>
                 </td>
-                <td><a href="/administrateur/panier?ind=<?php echo $i;?>#menuVoirProd"><i class="far fa-eye"></i></a>
+                <td><a href="/utilisateur/panier?ind=<?php echo $i;?>#menuVoirProd"><i class="far fa-eye"></i></a>
                 </td>
-                <td><a href="/administrateur/panier?ind=<?php echo $i;?>#menuDeletePanier"><i
+                <td><a href="/utilisateur/panier?ind=<?php echo $i;?>#menuDeletePanier"><i
                             class="fas fa-trash-alt"></i></a></td>
             </tr>
             <?php }?>
@@ -45,8 +45,8 @@ $nb_panier= sizeof($this->contentArray);
     if(count($this->contentArray)>0){?>
     
     <div class="btnPanier">
-    <a class="btnCancelAll" href="/administrateur/viderPanier">Annuler mon panier</a>
-        <a class="btnCmd" href="/administrateur/panier#MaCommande">Commander les produits</a>
+    <a class="btnCancelAll" href="/utilisateur/viderPanier">Annuler mon panier</a>
+        <a class="btnCmd" href="/utilisateur/panier#MaCommande">Commander les produits</a>
     </div>
     <?php }
     ?>
@@ -57,13 +57,13 @@ $nb_panier= sizeof($this->contentArray);
 <div id="MaCommande" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/panier" class="closebtn">×</a>
+            <a href="/utilisateur/panier" class="closebtn">×</a>
             <div>
                 <h2>Paiement de la commande</h2>
 
                 <p>Récapitulatif de la commande</p>
                 
-                <form class="formInformationsAdd" action="ajoutCommande" method="post">
+                <form class="formInformationsAdd" action="ajoutCommandeUser" method="post">
                 <?php 
                 $prix_depart=floatval(0);
                 for($i =0; $i< $nb_panier;$i++) {
@@ -100,7 +100,7 @@ $nb_panier= sizeof($this->contentArray);
 <div id="menuDeletePanier" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/panier" class="closebtn">×</a>
+            <a href="/utilisateur/panier" class="closebtn">×</a>
             <div>
                 <h2>Delete</h2>
                 <?php
@@ -144,7 +144,7 @@ $nb_panier= sizeof($this->contentArray);
 <div id="menuVoirProd" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/panier" class="closebtn">×</a>
+            <a href="/utilisateur/panier" class="closebtn">×</a>
             <h2>Consultation produit</h2>
             <?php
            if(isset($_GET['ind'])){
@@ -157,7 +157,7 @@ $nb_panier= sizeof($this->contentArray);
                     // Formatimage 
                     $src = 'data: image/jpeg;base64,'.$imageData;
                 echo '<div class="formulaireVoirProd">';
-                echo '<form id="formVuProd" action="/administrateur/produit#choiceProduct" method="post">';
+                echo '<form id="formVuProd" action="/utilisateur/produit#choiceProduct" method="post">';
                 echo '<div class="infoVuProd">';
                 echo '<div>';
                 echo '<img src="'.$src.'">';

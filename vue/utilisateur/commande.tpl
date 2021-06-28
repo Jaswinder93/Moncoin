@@ -43,7 +43,7 @@ $nb_c= sizeof($this->contentArray);
                       $date= strtotime($this->contentArray[$i]['DateCommande']); 
                      echo date('d-m-Y H:i', $date);?>
                 </td>
-                <td><a href="/administrateur/commande?ind=<?php echo $i;?>#menuVoirCmd"><i class="far fa-eye"></i></a>
+                <td><a href="/utilisateur/commande?ind=<?php echo $i;?>#menuVoirCmd"><i class="far fa-eye"></i></a>
                 </td>
 
             </tr>
@@ -56,7 +56,7 @@ $nb_c= sizeof($this->contentArray);
 <div id="menuVoirCmd" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/commande" class="closebtn">×</a>
+            <a href="/utilisateur/commande" class="closebtn">×</a>
             <h2>Consultation de mes commandes</h2>
 
             <?php
@@ -77,10 +77,10 @@ $nb_c= sizeof($this->contentArray);
                 echo '<img src="'.$src.'">';
                 echo '</div>';
                 echo '<div>';
-                echo '<p class="titre">'.$tabProd[$i]['NomProduit'].'</p>';
+                echo '<p style="text-decoration: underline; font-size:20px;" class="titre">'.$tabProd[$i]['NomProduit'].'</p>';
                 echo '<p class="info">Catégorie : '.$tabProd[$i]['Categorie'].'</p>';
                 echo '<p class="info">Prix Unitaire : '.$tabProd[$i]['PrixProduit'].'€</p>';
-                echo '<p class="info">Description: '.$tabProd[$i]['Description'].'</p>';
+                echo '<p style="color:gray;font-size:15px;">Description: '.$tabProd[$i]['Description'].'</p>';
                
                 echo '<p class="info">Vous en avez commandé : '.$tabProd[$i]['qteProduit'].'</p>';
                 echo '</div>';

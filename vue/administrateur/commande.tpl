@@ -45,7 +45,6 @@ $nb_c= sizeof($this->contentArray);
                 </td>
                 <td><a href="/administrateur/commande?ind=<?php echo $i;?>#menuVoirCmd"><i class="far fa-eye"></i></a>
                 </td>
-
             </tr>
             <?php }?>
         </tbody>
@@ -76,10 +75,10 @@ $nb_c= sizeof($this->contentArray);
                 echo '<img src="'.$src.'">';
                 echo '</div>';
                 echo '<div>';
-                echo '<p class="titre">'.$tabProd[$i]['NomProduit'].'</p>';
+                echo '<p style="text-decoration: underline;" class="titre">'.$tabProd[$i]['NomProduit'].'</p>';
                 echo '<p class="info">Catégorie : '.$tabProd[$i]['Categorie'].'</p>';
                 echo '<p class="info">Prix Unitaire : '.$tabProd[$i]['PrixProduit'].'€</p>';
-                echo '<p class="info">Description: '.$tabProd[$i]['Description'].'</p>';
+                echo '<p  style="color:gray" class="info">Description: '.$tabProd[$i]['Description'].'</p>';
                
                 echo '<p class="info">Vous en avez commandé : '.$tabProd[$i]['qteProduit'].'</p>';
                 echo '</div>';

@@ -17,7 +17,7 @@
     <p>
         <?=$this->msg; ?>
     </p>
-    <a class="addProd" href="/administrateur/vente#menuAjoutProd">Ajouter un produit</a>
+    <a class="addProd" href="/utilisateur/vente#menuAjoutProd">Ajouter un produit</a>
 
 
     <p class="venteCours">Mes produits en cours :</p>
@@ -47,16 +47,17 @@
                 <td>
                     <?=$this->contentArray[$i]['Categorie'];?>
                 </td>
-                <td><a href="/administrateur/vente?ind=<?php echo $i;?>#menuVoirProd"><i class="far fa-eye"></i></a>
+                <td><a href="/utilisateur/vente?ind=<?php echo $i;?>#menuVoirProd"><i class="far fa-eye"></i></a>
                 </td>
 
-                <td><a href="/administrateur/vente?ind=<?php echo $i;?>#menuProdQte"><i
+                <td><a href="/utilisateur/vente?ind=<?php echo $i;?>#menuProdQte"><i
                             class="fas fa-plus-circle"></i></a></td>
-                <td><a href="/administrateur/vente?ind=<?php echo $i;?>#menuProdDelete"><i
+                <td><a href="/utilisateur/vente?ind=<?php echo $i;?>#menuProdDelete"><i
                             class="fas fa-trash-alt"></i></a></td>
 
             </tr>
-            <?php }?>
+            <?php }
+            ?>
         </tbody>
     </table>
     <p class="ventesVendu">Mes ventes :</p>
@@ -66,7 +67,7 @@
                 <th>Nom Produit</th>
                 <th>Quantité vendu</th>
                 <th>Date </th>
-                <th>Montant </th>
+                <th>Montant Produit</th>
 
                 <th>Acheteur</th>
                 <th colspan="1">Actions</th>
@@ -77,11 +78,12 @@
     $tabProd=array();
     $id_commande=array();
     for($i =0; $i< $nb_vente;$i++){
-        $tabProd=selectCmdProd($this->contentArray[$i]['idProduit']);
+        $tabProd=selectCmdProdUser($this->contentArray[$i]['idProduit']);
 
         foreach($tabProd as $tab){
         if(isset($tab)){
             $idU=$tab['idUtilisateur'];
+            $idA=$tab['idAdmin'];
         ?>
         <tr>
             <td>
@@ -91,19 +93,19 @@
             <td>
                 <?=$tab['qteProduit'];?>
             </td>
-            <td>
             <td><?php 
             $date= strtotime($tab['DateCommande']); 
            echo date('d-m-Y H:i', $date);?>
             </td>
             </td>
             <td>
-                <?=$tab['MontantCommande'];?>€
+            <?=$tab['PrixProduit'];?>€
             </td>
-            <td>
-                <?=$tab['idUtilisateur'];?>
             </td>
-            <td><a href="/administrateur/vente?ind=<?php echo $idU;?>#menuVoir"><i class="far fa-eye"></i></a>
+                <td><a href="/utilisateur/vente?ind=<?php echo $idA;?>#menuVoir"><i class="far fa-eye"></i></a>
+                
+            </td>
+            <td><a href="/utilisateur/vente?ind=<?php echo $idU;?>#menuVoir"><i class="far fa-eye"></i></a>
             </td>
 
         </tr>
@@ -122,7 +124,7 @@
 <div id="menuAjoutProd" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/vente" class="closebtn">×</a>
+            <a href="/utilisateur/vente" class="closebtn">×</a>
             <h2>Ajout de produit</h2>
             <div>
                 <form class="formInformationsAdd" action="ajoutProd" method="post" enctype="multipart/form-data">
@@ -173,7 +175,7 @@
 <div id="menuProdQte" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/vente" class="closebtn">×</a>
+            <a href="/utilisateur/vente" class="closebtn">×</a>
             <div>
                 <h2>Modifier la quantité du produit</h2>
                 <?php
@@ -183,7 +185,7 @@
                     $prod=$this->contentArray[$_GET['ind']];
                          ?>
                 <div>
-                    <form class="formInformationsAdd" action="modifQte" method="post">
+                    <form class="formInformationsAdd" action="modifQteUser" method="post">
                         <div>
                             <label for="id">id Produit :</label>
                             <input name="id" value="<?php echo $prod['idProduit'];?>" readonly><br>
@@ -219,7 +221,7 @@
 <div id="menuProdDelete" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/vente" class="closebtn">×</a>
+            <a href="/utilisateur/vente" class="closebtn">×</a>
             <div>
                 <h2>Delete</h2>
                 <?php
@@ -260,12 +262,12 @@
 <div id="menuVoir" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/vente" class="closebtn">×</a>
-            <h2>Informations acheteur</h2>
+            <a href="/utilisateur/vente" class="closebtn">×</a>
+            <h2>Informations</h2>
             <?php
            if(isset($_GET['ind'])){
                     $user=array();
-                    $user=recupVendeurAd($_GET['ind']);
+                    $user=recupVendeurUser($_GET['ind']);
                     if(!empty($user)){
                     ?>
             <div>
@@ -304,7 +306,7 @@
 <div id="menuVoirProd" class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <a href="/administrateur/vente" class="closebtn">×</a>
+            <a href="/utilisateur/vente" class="closebtn">×</a>
             <h2>Consultation produit</h2>
             <?php
            if(isset($_GET['ind'])){
@@ -317,13 +319,13 @@
                     // Formatimage 
                     $src = 'data: image/jpeg;base64,'.$imageData;
                 echo '<div class="formulaireVoirProd">';
-                echo '<form id="formVuProd" action="/administrateur/produit#choiceProduct" method="post">';
+                echo '<form id="formVuProd" action="/utilisateur/produit#choiceProduct" method="post">';
                 echo '<div class="infoVuProd">';
                 echo '<div>';
                 echo '<img src="'.$src.'">';
                 echo '<div/>';
                 echo '<div>';
-                echo '<p class="titreProd">'.$prod['NomProduit'].'</p>';
+                echo '<p style="color:black;font-size:20px;text-decoration:underline;" class="titreProd">'.$prod['NomProduit'].'</p>';
                 echo '<p class="prixProd">'.$prod['PrixProduit']."€";'</p>'; 
                 echo '<p style="color:green">Disponible en stock : '.$prod['QteProduit'].'</p>';
                 echo '<p class="vendeurProd">Vendu par '.$_SESSION['profil']['nom']." ".$_SESSION['profil']['prenom'];'</p><br>';

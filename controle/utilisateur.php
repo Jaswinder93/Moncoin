@@ -120,15 +120,15 @@ function ajoutCommandeUser()
                 $quantiteDispo=$qteDispo[$index];
                 $quantite=$qteProduct[$index];
                 $quantiteTotal=intval($quantiteDispo) - intval($quantite);;
-                majQteProd($idP,$quantiteTotal);
+                majQteProdUser($idP,$quantiteTotal);
                 $index++;
             }
-            $valueCommande = ajouterCommande($id, 1, $montantCommande);
+            $valueCommande = ajouterCommandeUser($id, 1, $montantCommande);
             if (!$valueCommande) {
                 $msg = "Echec de commande !";
                 $view = new View('utilisateur/commande');
                 $contenu = array();
-                $contenu = commandeUser($id);
+                $contenu = commandeUserUtil($id);
                 $view->setMsg($msg);
                 $view->setContentArray($contenu);
                 $view->generate();
@@ -136,12 +136,12 @@ function ajoutCommandeUser()
                 echo "<script>alert('Commande passée !');</script>";
                 $index=0;
                 foreach ($idproduits as $idP) {
-                    constitueCommande($idP,$valueCommande[0]['idCommande'],$qteProduct[$index]);
+                    constitueCommandeUser($idP,$valueCommande[0]['idCommande'],$qteProduct[$index]);
                     $index++;
                 }
                 $view = new View('utilisateur/commande');
                 $contenu = array();
-                $contenu = commandeUser($id);
+                $contenu = commandeUserUtil($id);
                 viderLePanier($id);
                 $view->setContentArray($contenu);
                 $view->generate();
@@ -178,12 +178,10 @@ function ajoutPanier()
         panier();
     } else {
         try {
-            $id = $_SESSION['profil']['idUtilisateur'];
-            $quantiteTotal = isset($_POST['totalQuantite']) ? ($_POST['totalQuantite']) : '';
+            $id = $_SESSION['profil']['idUtilisateur'];($_POST['totalQuantite']) ? ($_POST['totalQuantite']) : '';
 
             $quantite = isset($_POST['quantite']) ? ($_POST['quantite']) : '';
             $idProd = isset($_POST['idProduit']) ? ($_POST['idProduit']) : '';
-            //$quantiteFinal = intval($quantiteTotal) - intval($quantite);
             if (!ajoutPanierBdUser($idProd, $quantite, $id)) {
                 $msg = "Erreur ajout !";
                 $view = new View('utilisateur/panier');
@@ -209,11 +207,23 @@ function ajoutPanier()
     }
 }
 
+function viderPanier()
+{
+    require("./modele/utilisateur/utilisateurBD.php");
+    estConnecté();
+    $view = new View('utilisateur/panier');
+    $contenu = array();
+    $id = $_SESSION['profil']['idUtilisateur'];
+    viderLePanier($id);
+    $contenu = recupPanierUserUtil($id);
+    $view->setContentArray($contenu);
+    $view->generate();
+}
 
 //suppression du panier
 function deleteFromPanier()
 {
-    require("./modele/utilisateur/utilisateurrBD.php");
+    require("./modele/utilisateur/utilisateurBD.php");
     estConnecté();
     if (count($_POST) == 0) {
         panier();
@@ -262,9 +272,9 @@ function modifQteUser()
             $id = isset($_POST['id']) ? ($_POST['id']) : '';
             $qte = isset($_POST['newQte']) ? ($_POST['newQte']) : '';
             $idVendeur = $_SESSION['profil']['idUtilisateur'];
-            if (!updateQte($id, $qte)) {
+            if (!updateQteUser($id, $qte)) {
                 $msg = "Echec de modification veuillez reessayer !";
-                $view = new View('administrateur/vente');
+                $view = new View('utilisateur/vente');
                 $contenu = array();
                 $contenu = recupVenteUser($idVendeur);
                 $view->setContentArray($contenu);
@@ -272,9 +282,107 @@ function modifQteUser()
                 $view->generate();
             } else {
                 $msg = "Quantité modifié !";
-                $view = new View('administrateur/vente');
+                $view = new View('utilisateur/vente');
                 $contenu = array();
-                $contenu = recupVenteUser($idVendeur);
+                $contenu = recupVenteUserUtil($idVendeur);
+                $view->setContentArray($contenu);
+                $view->setMsg($msg);
+                $view->generate();
+            }
+        } catch (Exception $e) {
+            $msgError = $e->getMessage();
+            require_once("controle/erreur.php");
+            erreur($msgError);
+        }
+    }
+}
+
+///////////////////////////////////////
+/*Fonctionnalités ventes  */
+function vente()
+{
+    require("./modele/utilisateur/utilisateurBD.php");
+    estConnecté();
+    $view = new View('utilisateur/vente');
+    $contenu = array();
+    $id = $_SESSION['profil']['idUtilisateur'];
+    $contenu = recupVenteUserUtil($id);
+    $view->setContentArray($contenu);
+    $view->generate();
+}
+
+/** Gestion des produits **/
+
+function ajoutProd()
+{
+    require("./modele/utilisateur/utilisateurBD.php");
+    estConnecté();
+    if (count($_POST) == 0) {
+        vente();
+    } else {
+        try {
+
+            $nom = isset($_POST['nom']) ? ($_POST['nom']) : '';
+            $prix = isset($_POST['prix']) ? ($_POST['prix']) : '';
+
+            $categorie = isset($_POST['categorie']) ? ($_POST['categorie']) : '';
+            $quantite = isset($_POST['quantite']) ? ($_POST['quantite']) : '';
+            $desc = isset($_POST['description']) ? ($_POST['description']) : '';
+            $dataImg = file_get_contents($_FILES['imgProd']['tmp_name']);
+            $idVendeur = $_SESSION['profil']['idUtilisateur'];
+            // echo $idVendeur;
+            $currentDateTime = date('Y-m-d H:i:s');
+            if (!ajoutProduitUser($nom, $prix, $categorie, $quantite, $desc, $idVendeur, $dataImg, $currentDateTime)) {
+                $msg = "Erreur ajout !";
+                $view = new View('utilisateur/vente');
+                $contenu = array();
+                $contenu = recupVenteUserUtil($idVendeur);
+                $view->setContentArray($contenu);
+                $view->setMsg($msg);
+                $view->generate();
+            } else {
+                $msg = "Produit ajouté !";
+                $view = new View('utilisateur/vente');
+                $contenu = array();
+                $contenu = recupVenteUserUtil($idVendeur);
+                $view->setContentArray($contenu);
+                $view->setMsg($msg);
+                $view->generate();
+            }
+        } catch (Exception $e) {
+            $msgError = $e->getMessage();
+            require_once("controle/erreur.php");
+            erreur($msgError);
+        }
+    }
+}
+
+
+
+function deleteProduct()
+{
+    require("./modele/utilisateur/utilisateurBD.php");
+    estConnecté();
+    if (count($_POST) == 0) {
+        vente();
+    } else {
+        try {
+
+            $id = isset($_POST['id']) ? ($_POST['id']) : '';
+            $idVendeur = $_SESSION['profil']['idUtilisateur'];
+            if (!supprimeProdUser($id)) {
+                $msg = "Echec de suppresion veuillez reessayer !";
+                $view = new View('utilisateur/vente');
+                $contenu = array();
+                $contenu = recupVenteUserUtil($idVendeur);
+                $view->setContentArray($contenu);
+                $view->setMsg($msg);
+                $view->generate();
+            } else {
+                $msg = "produit supprimé !";
+                $view = new View('utilisateur/vente');
+                $contenu = array();
+                $contenu = recupVenteUserUtil($idVendeur);
                 $view->setContentArray($contenu);
                 $view->setMsg($msg);
                 $view->generate();

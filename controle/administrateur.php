@@ -99,11 +99,8 @@ function ajoutPanier()
     } else {
         try {
             $id = $_SESSION['profil']['idUtilisateur'];
-            $quantiteTotal = isset($_POST['totalQuantite']) ? ($_POST['totalQuantite']) : '';
-
             $quantite = isset($_POST['quantite']) ? ($_POST['quantite']) : '';
             $idProd = isset($_POST['idProduit']) ? ($_POST['idProduit']) : '';
-            //$quantiteFinal = intval($quantiteTotal) - intval($quantite);
             if (!ajoutPanierBd($idProd, $quantite, $id)) {
                 $msg = "Erreur ajout !";
                 $view = new View('administrateur/panier');
@@ -150,10 +147,6 @@ function deleteFromPanier()
         panier();
     } else {
         try {
-
-            $quantiteTotal = isset($_POST['totalQuantite']) ? ($_POST['totalQuantite']) : '';
-            $quantite = isset($_POST['quantite']) ? ($_POST['quantite']) : '';
-            //$quantiteFinal = intval($quantiteTotal) + intval($quantite);
             $idProd = isset($_POST['idProduit']) ? ($_POST['idProduit']) : '';
             $id = $_SESSION['profil']['idUtilisateur'];
             if (!supprimeProdPanier($idProd, $id)) {
@@ -578,6 +571,41 @@ function deleteUser()
                 $view = new View('administrateur/gestionUser');
                 $contenu = array();
                 $contenu = recupUserAdmin($contenu);
+                $view->setContentArray($contenu);
+                $view->setMsg($msg);
+                $view->generate();
+            }
+        } catch (Exception $e) {
+            $msgError = $e->getMessage();
+            require_once("controle/erreur.php");
+            erreur($msgError);
+        }
+    }
+}
+//suppression de commande
+function deleteCmd()
+{
+    require("./modele/administrateur/administrateurBD.php");
+    estConnecté();
+    if (count($_POST) == 0) {
+        gestionUser();
+    } else {
+        try {
+
+            $id = isset($_POST['id']) ? ($_POST['id']) : '';
+            if (!supprimeCmd($id)) {
+                $msg = "Echec de suppresion veuillez reessayer !";
+                $view = new View('administrateur/gestionCommande');
+                $contenu = array();
+                $contenu = recupCommandeAdmin($contenu);
+                $view->setContentArray($contenu);
+                $view->setMsg($msg);
+                $view->generate();
+            } else {
+                $msg = "commande supprimé !";
+                $view = new View('administrateur/gestionCommande');
+                $contenu = array();
+                $contenu = recupCommandeAdmin($contenu);
                 $view->setContentArray($contenu);
                 $view->setMsg($msg);
                 $view->generate();
