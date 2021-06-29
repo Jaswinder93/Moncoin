@@ -65,8 +65,8 @@ $this->t = "Gestionnaire user";
                 </td>
                 <td><a href="/administrateur/gestionUser?ind=<?php echo $i;?>#menuVoir"><i class="far fa-eye"></i></a>
                 </td>
-                <td style="background-color: grey";>Admin</td>
-                <td style="background-color: grey";>Admin</td>
+                <td style="background-color: rgb(121, 3, 3);color:white;";>Admin</td>
+                <td style="background-color: rgb(116, 3, 3);color:white;";>Admin</td>
             </tr>
 
 

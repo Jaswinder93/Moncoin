@@ -25,7 +25,7 @@ $this->t = "Gestionnaire commande";
                 <th>id acheteur</th>
                 <th>Etat Commande</th>
                 <th>Date Commande</th>
-                <th colspan="2">Edition</th>
+                <th colspan="3">Edition</th>
             </tr>
         </thead>
         <tbody>
@@ -46,8 +46,11 @@ $this->t = "Gestionnaire commande";
                       $date= strtotime($this->contentArray[$i]['DateCommande']); 
                      echo date('d-m-Y H:i', $date);?>
                 </td>
-                <td><a href="/administrateur/gestionCommande?ind=<?php echo $i;?>#menuEdit"><i
-                            class="fas fa-user-edit"></i></a></td>
+                
+                </td>
+                <td><a href="/administrateur/gestionCommande?ind=<?php echo $i;?>#menuVoirCmd"><i class="far fa-eye"></i></a>
+                </td>
+                <td><a href="/administrateur/gestionCommande?ind=<?php echo $i;?>#menuEdit"><i class="fas fa-edit"></i></a></td>
                             
                 <td><a href="/administrateur/gestionCommande?ind=<?php echo $i;?>#menuDeleteCmd"><i
                 class="fas fa-trash-alt"></i></a></td>
@@ -57,6 +60,50 @@ $this->t = "Gestionnaire commande";
     </table>
 
 </div>
+
+
+<div id="menuVoirCmd" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a href="/administrateur/gestionCommande" class="closebtn">×</a>
+            <h2>Consultation de mes commandes</h2>
+
+            <?php
+            $cmd=array();
+            if(isset($this->contentArray[$_GET['ind']])){
+            $cmd=$this->contentArray[$_GET['ind']];
+            $tabProd=array();
+            $tabProd=selecProdCmd($cmd['idCommande']);
+            for($i=0;$i<count($tabProd);$i++){
+                $image = $tabProd[$i]['image'];
+                //image path, convertir en base64
+                $imageData = base64_encode($image);
+                // Formatimage 
+                $src = 'data: image/jpeg;base64,'.$imageData;
+                echo '<div class="produitCmd">';
+                echo '<div>';
+                echo '<img src="'.$src.'">';
+                echo '</div>';
+                echo '<div>';
+                echo '<p style="text-decoration: underline;" class="titre">'.$tabProd[$i]['NomProduit'].'</p>';
+                echo '<p class="info">Catégorie : '.$tabProd[$i]['Categorie'].'</p>';
+                echo '<p class="info">Prix Unitaire : '.$tabProd[$i]['PrixProduit'].'€</p>';
+                echo '<p  style="color:gray" class="info">Description: '.$tabProd[$i]['Description'].'</p>';
+               
+                echo '<p class="info">Quantité commandée : '.$tabProd[$i]['qteProduit'].'</p>';
+                
+                echo '<p class="info">Acheté par : '.$tabProd[$i]['idUtilisateur'].'</p>';
+                
+                echo '<p class="info">Vendu par : '.$tabProd[$i]['idVendeur'].'</p>';
+                echo '</div>';
+                echo '</div>';
+            }
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
 
 <div id="menuDeleteCmd" class="modal">
     <div class="modal-dialog">

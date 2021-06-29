@@ -8,7 +8,7 @@
 ?>
 
 <div id="sellGestionnaire">
-    <h2>Gestions des vente</h2>
+    <h2>Gestion de ventes</h2>
 
     <p style="color:red;">
         <?=$this->msgError;
@@ -32,7 +32,12 @@
             </tr>
         </thead>
         <tbody>
-            <?php for($i =0; $i< $nb_vente;$i++){?>
+            <?php
+            
+            $qteProdCategDispo=array("Vêtements"=>0, "Informatique"=>0, "Logiciels"=>0, "Chaussures"=>0, "Jeux-DVD"=>0, "Livres"=>0, "Bijoux"=>0);
+             for($i =0; $i< $nb_vente;$i++){
+            $qteProdCategDispo[$this->contentArray[$i]['Categorie']]+=$this->contentArray[$i]['QteProduit'];
+            ?>
             <tr>
                 <td>
                     <?=$this->contentArray[$i]['NomProduit'];?>
@@ -69,21 +74,26 @@
                 <th>Date </th>
                 <th>Montant Produit</th>
 
-                <th>Acheteur</th>
-                <th colspan="1">Actions</th>
+                <th>Admin</th>
+                <th colspan="1">Acheteur</th>
             </tr>
         </thead>
         <?php
-
+    $qteProdCateg=array("Vêtements"=>0, "Informatique"=>0, "Logiciels"=>0, "Chaussures"=>0, "Jeux-DVD"=>0, "Livres"=>0, "Bijoux"=>0);
     $tabProd=array();
+    $argProdCateg=array("Vêtements"=>0, "Informatique"=>0, "Logiciels"=>0, "Chaussures"=>0, "Jeux-DVD"=>0, "Livres"=>0, "Bijoux"=>0);
+    
     $id_commande=array();
     for($i =0; $i< $nb_vente;$i++){
         $tabProd=selectCmdProdUser($this->contentArray[$i]['idProduit']);
 
         foreach($tabProd as $tab){
+        
         if(isset($tab)){
             $idU=$tab['idUtilisateur'];
             $idA=$tab['idAdmin'];
+            $argProdCateg[$tab['Categorie']]+=($tab['qteProduit']*$tab['PrixProduit']);
+            $qteProdCateg[$tab['Categorie']]+=$tab['qteProduit'];
         ?>
         <tr>
             <td>
@@ -117,8 +127,103 @@
     ?>
         </tbody>
     </table>
+   
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+     
+<div style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;width: 80%;margin-left:10%;margin-top:5%;background-color:white;">
+<div style="width: 350px;margin:auto;">
+    
+<h3 style="width: 80%;text-decoration:underline;text-align:center;margin-left: 10%;padding:4%;">Quantité vendues par catégorie</h3>
+<canvas id="graphique" width="100px" height="100px"></canvas>
+<h3 style="width: 80%;text-decoration:underline;text-align:center;margin-left: 10%;padding:4%;">Bénéfices par catégories</h3>
+<canvas id="graph" width="100px" height="100px"></canvas>
+<h3 style="width: 80%;text-decoration:underline;text-align:center;margin-left: 10%;padding:4%;">Quantité disponible par catégorie</h3>
+<canvas id="graphe" width="100px" height="100px"></canvas>
+</div>
+</div>
+<script>
+// l'identifiant est celui du canevas
+var ctx = document.getElementById('graphique').getContext('2d');
 
+var ctx2 = document.getElementById('graph').getContext('2d');
+
+var ctx3 = document.getElementById('graphe').getContext('2d');
+// création du graphique
+var myChart = new Chart(ctx, {
+type: 'doughnut',   // le type du graphique
+data: {        // les données
+    labels: ['Vêtements', 'Informatique', 'Logiciels', 'Livres', 'Chaussures',  'Jeux-DVD', 'Bijoux'],
+    datasets: [{
+                label: 'Quantité vendu',
+                data: [<?php echo $qteProdCateg['Vêtements']; ?>, <?php echo $qteProdCateg['Informatique']; ?>,<?php echo $qteProdCateg['Logiciels']; ?>, <?php echo $qteProdCateg['Livres']; ?>, <?php echo $qteProdCateg['Chaussures']; ?>,
+                <?php echo $qteProdCateg['Jeux-DVD']; ?>, <?php echo $qteProdCateg['Bijoux']; ?>], 
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(200, 100, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 150, 86)',
+                    'rgb(35, 25, 86)',
+                  ],
+                  hoverOffset: 4
+
+               }]
+       }
+     }
+);
+
+var myChart2 = new Chart(ctx2, {
+type: 'bar',   // le type du graphique
+data: {        // les données
+    labels: ['Vêtements', 'Informatique', 'Logiciels', 'Livres', 'Chaussures',  'Jeux-DVD', 'Bijoux'],
+    datasets: [{
+                label: 'Somme reçu',
+                data: [<?php echo $argProdCateg['Vêtements']; ?>, <?php echo $argProdCateg['Informatique']; ?>,<?php echo $argProdCateg['Logiciels']; ?>, <?php echo $argProdCateg['Livres']; ?>, <?php echo $argProdCateg['Chaussures']; ?>,
+                <?php echo $argProdCateg['Jeux-DVD']; ?>, <?php echo $argProdCateg['Bijoux']; ?>], 
+                backgroundColor: [
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 205, 86)',
+                  ],
+                  hoverOffset: 4
+
+               }]
+       }
+     }
+);
+
+
+var myChart3 = new Chart(ctx3, {
+type: 'polarArea',   // le type du graphique
+data: {        // les données
+    labels: ['Vêtements', 'Informatique', 'Logiciels', 'Livres', 'Chaussures',  'Jeux-DVD', 'Bijoux'],
+    datasets: [{
+                label: 'Quantité disponible',
+                data: [<?php echo $qteProdCategDispo['Vêtements']; ?>, <?php echo $qteProdCategDispo['Informatique']; ?>,<?php echo $qteProdCategDispo['Logiciels']; ?>, <?php echo $qteProdCategDispo['Livres']; ?>, <?php echo $qteProdCategDispo['Chaussures']; ?>,
+                <?php echo $qteProdCategDispo['Jeux-DVD']; ?>, <?php echo $qteProdCategDispo['Bijoux']; ?>],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)',
+                    'rgb(200, 100, 86)',
+                    'rgb(150, 205, 86)',
+                    'rgb(150, 150, 86)',
+                    'rgb(35, 25, 86)',
+                  ],
+                  hoverOffset: 4
+
+               }]
+       }
+     }
+);
+</script>
 
 
 <div id="menuAjoutProd" class="modal">

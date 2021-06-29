@@ -118,25 +118,21 @@
 
 .tabGestion {
     margin-top: 2%;
-    border: 1px solid black;
+    border: 1px solid rgb(126, 124, 124);
     border-radius: 4px;
 }
 
 .tabGestion thead th {
-    border: 1px solid rgb(216, 211, 211);
     padding: 10px;
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(61, 60, 60);
     color: white;
 }
 
-.tabGestion thead th:hover {
-    background-color: rgb(245, 210, 157);
-    color: black;
-    border: 1px solid black;
+tr:nth-child(2n) {
+    background-color: rgb(215, 215, 223);
 }
 
 .tabGestion tbody td {
-    border: 1px solid black;
     padding: 4px;
 }
 

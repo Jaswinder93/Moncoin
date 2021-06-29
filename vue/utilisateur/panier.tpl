@@ -82,7 +82,6 @@ $nb_panier= sizeof($this->contentArray);
                 <?php } 
                 ?>
                 <div>
-                <div>
                     <label for="totalPrice">Prix Total :</label>
                     <input name="totalPrice" value="<?php echo $prix_depart;?>" readonly><br>
                 </div>
